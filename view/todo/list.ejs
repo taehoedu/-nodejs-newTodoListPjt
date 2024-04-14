@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+
+    <link href="/css/todo/list.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/todo/list.js"></script>
+
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+    
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <h4>TODO LIST</h4>
+            </div>
+
+            <div class="content">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>OWNER_NO</th>
+                                <th>TITLE</th>
+                                <th>BODY</th>
+                                <th>EXPIRATION_DATE</th>
+                                <th>COMP</th>
+                                <th>REG_DATE</th>
+                                <th>MOD_DATE</th>
+                                <th>MOD</th>
+                                <th>DEL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < todos.length; i++) { %>
+                                <tr>
+                                    <td><%= todos[i].T_NO %></td>
+                                    <td><%= todos[i].T_OWNER_NO %></td>
+                                    <td><%= todos[i].T_TITLE %></td>
+                                    <td><%= todos[i].T_BODY %></td>
+                                    <td><%= todos[i].T_EXPIRATION_DATE %></td>
+                                    <td>
+
+                                        <!-- <% if (Number(todos[i].T_IS_COMPLETE) === 0) {%>
+                                                <a href="/todo/complete_update?t_no=<%= todos[i].T_NO %>&t_is_complete=<%=todos[i].T_IS_COMPLETE%>">COMP</a>
+                                            
+                                            <% } else { %>
+                                                <a href="/todo/complete_update?t_no=<%= todos[i].T_NO %>&t_is_complete=<%=todos[i].T_IS_COMPLETE%>">UNCOMP</a>
+
+                                        <% }  %> -->
+
+                                        <a href="/todo/complete_update?t_no=<%= todos[i].T_NO %>&t_is_complete=<%=todos[i].T_IS_COMPLETE%>">
+                                            
+                                            <% if (Number(todos[i].T_IS_COMPLETE) === 0) {%>
+                                                COMP
+                                            <% } else { %>
+                                                UNCOMP
+                                            <% }  %>
+                                        
+                                        </a>
+                                        
+                                    </td>
+                                    <td><%= todos[i].T_REG_DATE %></td>
+                                    <td><%= todos[i].T_MOD_DATE %></td>
+                                    <td><a href="/todo/modify?t_no=<%= todos[i].T_NO %>">MOD</a></td>
+                                    <td><a href="/todo/delete_confoirm?t_no=<%= todos[i].T_NO %>">DEL</a></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btns">
+                    <a href="/todo/write_form">WRITE</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

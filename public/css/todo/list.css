@@ -1,0 +1,40 @@
+article div.article_wrap {
+    width: 1400px;
+    margin: 50px auto;
+}
+
+article div.title {
+    text-align: center;
+}
+
+article div.content {
+    margin-top: 10px;
+    text-align: center;
+}
+
+article div.content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+article div.content table th,
+article div.content table td {
+    border: 1px solid rgba(200, 200, 200, .5);
+    padding: 7px 2px;
+    font-size: .9em;
+}
+
+article div.content div.btns {
+    width: 330px;
+    margin: 10px auto;
+    padding: 10px 0;
+    border-top: 1px solid rgba(200, 200, 200, .6);
+    border-bottom: 1px solid rgba(200, 200, 200, .6);
+}
+
+article div.content div.btns a {
+    display: inline-block;
+    padding: 3px 15px;
+    border: 1px solid rgba(200, 200, 200, .6);
+    border-radius: 4px;
+}

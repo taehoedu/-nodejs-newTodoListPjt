@@ -1,0 +1,16 @@
+article {
+
+}
+
+article div.article_wrap {
+    width: 1000px;
+    margin: 50px auto;
+}
+
+article div.article_wrap div.title {
+    text-align: center;
+}
+
+article div.article_wrap div.content {
+    text-align: center;
+}

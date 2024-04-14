@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+
+    <link href="/css/todo/write_form.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/todo/write_form.js"></script>
+
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+    
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <h4>TODO WRITE</h4>
+            </div>
+
+            <div class="content">
+                <div>
+                    <form action="/todo/write_confirm" method="post" name="write_form">
+                        <input type="text" name="t_title" placeholder="INPUT NEW TODO TITLE"> <br />
+                        <input type="text" name="t_body" placeholder="INPUT NEW TODO BODY"> <br />
+                        <input type="datetime-local" name="t_expiration_date"> <br />
+                        <input type="button" value="WRITE" onclick="writeForm();">
+                        <input type="reset" value="RESET">
+                    </form>
+                </div>
+                <div class="btns">
+                    <a href="/todo/list">LIST</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

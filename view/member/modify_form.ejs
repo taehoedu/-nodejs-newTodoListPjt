@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+
+    <link href="/css/member/modify_form.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/member/modify_form.js"></script>
+
+    <script>
+        let loginedMId = '<%= loginedMember.M_ID %>';
+        // let thumNames = '<%- JSON.stringify(thumNames) %>';
+        thumNames = JSON.parse('<%- JSON.stringify(thumNames) %>');
+        let curIdx = 0;
+    </script>
+
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+    
+    <article>
+        <div class="article_wrap">
+
+            <div class="title">
+                <h4>MODIFY FORM</h4>
+            </div>
+            
+            <div class="content">
+                <form action="/member/modify_confirm" method="post" name="modify_form" enctype="multipart/form-data">
+                    <input type="hidden" name="m_no" value="<%= loginedMember.M_NO %>"><br>
+                    <input type="text" name="m_id" value="<%= loginedMember.M_ID %>" readonly><br>
+                    <input type="password" name="m_pw" placeholder="INPUT NEW MEMBER PW"><br>
+                    <input type="email" name="m_mail" value="<%= loginedMember.M_MAIL %>" placeholder="INPUT NEW MEMBER MAIL"><br>
+                    <input type="text" name="m_phone" value="<%= loginedMember.M_PHONE %>"placeholder="INPUT NEW MEMBER PHONE"><br>
+                    <input type="file" name="profile_thum" placeholder="SELECT PROFILE IMAGE"><br>
+                    
+                    <div class="profile_thum_wrap">
+                        <a href="#none">
+                    <%
+                        if (loginedMember.M_PROFILE_THUM !== '') {
+                    %>
+                            <img src="/<%=loginedMember.M_ID%>/<%= loginedMember.M_PROFILE_THUM %>">
+                    <%
+                        } else {
+                    %> 
+                            <img src="/img/default_profile_thum.png">
+                    <%  
+                        }
+                    %>
+                        </a>
+                    </div>
+                    <br>
+                    CHANGE or DELETE COVER PROFILE <input type="checkbox" name="cover_profile_thum_delete"><br><br>
+                    <input type="button" value="MODIFY" onclick="modifyForm();">
+                    <input type="button" value="RESET" onclick="resetForm();">
+                </form>
+            </div>
+
+            <div id="profile_modal_wrap">
+                <div class="profile_thum_close">
+                    <a href="#none">CLOSE</a>
+                </div>
+                <div class="profile_thum">
+                    <div class="pre_btn">
+                        <a href="#none" onclick="">PRE_BTN</a>
+                    </div>
+                    <div class="thum">
+                        <%
+                            if (loginedMember.M_PROFILE_THUM !== '') {
+                        %>
+                                <img src='/<%=loginedMember.M_ID%>/<%= thumNames[0].PT_NAME %>'/>
+                        <%
+                            }
+                        %>
+                    </div>
+                    <div class="next_btn">
+                        <a href="#none" onclick="">NEXT_BTN</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </article>
+    
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

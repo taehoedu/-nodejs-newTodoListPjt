@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+
+    <link href="/css/todo/write_form.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/todo/modify_form.js"></script>
+
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+    
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <h4>TODO WRITE</h4>
+            </div>
+
+            <div class="content">
+                <div>
+                    <form action="/todo/modify_confirm" method="post" name="modify_form">
+                        <input type="hidden" name="t_no" value="<%= todo[0].T_NO %>"> <br />
+                        <input type="text" name="t_title" value="<%= todo[0].T_TITLE %>" placeholder="INPUT TODO TITLE"> <br />
+                        <input type="text" name="t_body" value="<%= todo[0].T_BODY %>" placeholder="INPUT TODO BODY"> <br />
+                        <input type="datetime-local" value="<%= todo[0].T_EXPIRATION_DATE %>" name="t_expiration_date"> <br />
+                        <input type="button" value="MODIFY" onclick="modifyForm();">
+                        <input type="reset" value="RESET">
+                    </form>
+                </div>
+                <div class="btns">
+                    <a href="/todo/list">LIST</a>
+                    <a href="/todo/list">CANCEL</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

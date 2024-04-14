@@ -1,0 +1,27 @@
+<link href="/css/include/nav.css" rel="stylesheet" type="text/css">
+
+<script src="/js/include/nav.js"></script>
+
+<nav>
+    <div class="nav_wrap">
+        <a href="/">HOME</a> &nbsp;
+
+        <%
+            if (loginedMember === undefined) {
+        %>
+            <a href="/member/signup_form">SIGNUP</a> &nbsp;
+            <a href="/member/signin_form">SIGNIN</a> &nbsp;
+        <%
+            } else {
+        %>
+            <a href="/member/modify_form">MODIFY</a> &nbsp;
+            <a href="#none" onclick="deleteConfirm()">DELETE</a> &nbsp;
+            <a href="/member/signout_confirm">SIGNOUT</a> 
+            &nbsp; | &nbsp;
+            <a href="/todo/list">TODOLIST</a> &nbsp;
+        <%
+            }
+        %>
+        
+    </div>
+</nav>

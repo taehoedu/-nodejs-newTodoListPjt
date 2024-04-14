@@ -1,0 +1,10 @@
+nav {
+    border-bottom: 1px solid rgba(200, 200, 200, .5);
+    background-color: rgba(200, 200, 200, .3);
+}
+
+nav div.nav_wrap {
+    text-align: right;
+    padding-right: 10px;
+    height: 40px; line-height: 40px;
+}
